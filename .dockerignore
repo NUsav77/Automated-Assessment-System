@@ -1,0 +1,8 @@
+db.sqlite3
+cypress/
+package.json
+package-lock.json
+.gitignore
+aas/AAS/.env
+.env.docker
+NUCSC480.zip

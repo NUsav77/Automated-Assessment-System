@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container-fluid">
+        <ul>
+        {% if object_list|length == 0 %}
+            <li>Nothing to display</li>
+        {%  endif %}
+            {% for obj in object_list %}
+                    <div class="col-lg-5 col-sm-auto">
+                        <div class="card bg-primary text-white mb-3">
+                            <i class="fas fa-fw fa-plus"></i>
+                            <div class="card-body">{{ obj.assessment }}</div>
+                            <div class="card-footer d-flex align-items-center justify-content-between">
+                                <a class="small text-white stretched-link" href="{{ obj.get_absolute_url }}">Take Assessment</a>
+                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

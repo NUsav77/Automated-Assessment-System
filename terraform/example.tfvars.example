@@ -1,0 +1,15 @@
+# File to encode secrets used by the provisioning process.
+# Normally not recorded in git.
+
+# E.g. Run:
+# terraform init
+# terraform plan -var-file=example.tfvars.example
+# user_data for aws_lightsail_instance.server used a
+
+# Public key to use for the instance.
+# If you don't have the public key but have the private key you can do soem thing like the below to get the public string:
+# ssh-keygen -f ~/Downloads/joes-test-keypair.pem -y
+ssh_pub_key = "ssh-rsa somebase64 content"
+
+# Other variables that can be passed.
+SECRET_KEY = "KEY"

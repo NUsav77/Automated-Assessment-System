@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+    {%  if is_new_attempt %}
+        <a href="{{ page_obj.get_absolute_url }}?start=True">Start assessment</a>
+    {%  else %}
+    <div class="container-fluid">{{ question_text }} </div>
+    <div class="container-fluid" id="response">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Save Answer</button>
+        </form>
+        {% if is_saved %}
+        <div class="container-fluid"> Answer saved! </div>
+        {% endif %}
+    </div>
+    {% if is_paginated %}
+        <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a href="{{ page_obj.get_absolute_url }}?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+                <span class="page-current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="{{ page_obj.get_absolute_url }}?page={{ page_obj.next_page_number }}">next</a>
+                {% else %}
+                    <a href="{{ page_obj.get_absolute_url }}?end=True">Complete exam</a>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}
+    {% endif %}
+{% endblock %}
